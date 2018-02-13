@@ -4,14 +4,62 @@ export default StyleSheet.create({
     container:{
         backgroundColor:'#9C1C26',
         flex:1,
-        alignItems:'center',
         justifyContent:'center'
+    },
+    containera:{
+        backgroundColor:'white',
+        borderRadius:5,
+        padding:10,
+        paddingBottom:0
+    },
+    containerb:{
+        flexDirection:'row',
+        justifyContent:'space-between',
+        padding:15
+    },
+    containerc:{ 
+        flexDirection:'row', 
+        justifyContent:'space-between',
+        borderTopWidth:1,
+        borderTopColor:'rgba(0,0,0,0.2)',
+        padding:10,
+        paddingLeft:20,
+        paddingRight:20
+    },
+    containerd:{
+        flexDirection:'row', 
+        justifyContent:'space-between',
+        width:70
+    },
+    containere:{
+        width: 20, 
+        height: 20,
+        alignSelf:'flex-end'
+    },
+    containerf:{
+        padding:5,
+        alignSelf:'stretch',
+        borderRadius:20,
+        borderColor:'#9C1C26',
+        borderWidth:2
     },
     button:{
         backgroundColor:'white',
         justifyContent:'center',
         alignItems:'center',
         backgroundColor:'white',
+    },
+    toucha:{
+        padding:20,
+        backgroundColor:'rgba(0,0,0,0.05)',
+        borderRadius:50
+    },
+    dimensiona:{
+        width: 25, 
+        height: 25,
+    },
+    flexa:{
+        alignItems:'center'
     },
     textColora:{
         color:'#9C1C26'
@@ -77,6 +125,9 @@ export default StyleSheet.create({
     simple_Margin:{
         marginTop:10,
         marginBottom:10
+    },
+    textWeight:{
+        fontWeight:'bold'
     }
 })
 
