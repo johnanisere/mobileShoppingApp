@@ -43,6 +43,62 @@ export default StyleSheet.create({
         borderColor:'#9C1C26',
         borderWidth:2
     },
+    containerg:{
+        flexDirection:'row',
+        alignItems:'center',
+        padding:10,
+        backgroundColor:'white',
+        borderBottomColor:'rgba(0,0,0,0.1)',
+        borderBottomWidth:1 ,
+        //paddingRight:20
+    },
+    containerh:{
+        flexDirection:'row',
+        backgroundColor:'white',
+        borderBottomColor:'rgba(0,0,0,0.1)',
+        borderBottomWidth:1,
+        position:'relative',
+        height:120 
+    },
+    containeri:{
+        flex:1,
+        position:'absolute',
+        left:0,
+        top:0,
+        bottom:0,
+        padding:20
+    },
+    containerj:{
+        flex:2,
+        backgroundColor:'#9C1C26',
+        justifyContent:'space-around',
+        alignItems:'center',
+        paddingTop:15,
+        paddingBottom:15
+    },
+    containerk:{
+        backgroundColor:'white',
+        height:'70%',
+        paddingTop:0,
+        padding:10,
+        paddingBottom:25
+    },
+    containerl:{
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'center',
+        padding:5
+    },
+    containerm:{
+        flexDirection:'row',
+        flex:1,
+        alignItems:'center',
+        justifyContent:'space-between'
+    },
+    containern:{
+        flexDirection:'row',
+        alignItems:'center'
+    },
     button:{
         backgroundColor:'white',
         justifyContent:'center',
@@ -102,6 +158,9 @@ export default StyleSheet.create({
     all_width:{
         width:'100%',
     },
+    all_height:{
+        height:'100%'
+    },
     hideDisplay:{
         opacity:0
     },
@@ -128,11 +187,105 @@ export default StyleSheet.create({
     },
     textWeight:{
         fontWeight:'bold'
+    },
+    anima:{ 
+        width:80,
+        height:80,
+        borderRadius:40,
+        backgroundColor:"rgba(156,28,38,0.1)",
+        justifyContent:"center",
+        alignItems:"center"
+    },
+    texta:{
+        fontSize:20,
+        color:'#9C1C26'
+    },
+    textb:{
+        fontSize:20,
+        color:'rgba(0,0,0,.5)'
+    },
+    textc:{
+        fontSize:20,
+        color:'#9C1C26',
+        marginTop:8
+    },
+    textd:{
+        padding:5,
+        margin:5,
+        color:'#9C1C26',
+        borderLeftWidth:1,
+        borderColor:'rgba(0,0,0,.2)',
+        borderTopWidth:0,
+        borderBottomWidth:0
+    },
+    imagea:{
+        width:80,
+        height:80,
+        borderRadius:40
+    },
+    flexb:{
+        flex:2
+    },
+    flexc:{
+        flex:1
+    },
+    loading__a:{
+            position:'absolute',
+            right:0,
+            top:0,
+            width:90,
+            height:119
+    },
+    button__a:{
+        backgroundColor:'#9C1C26',
+        borderRadius:5
+    },
+    textd:{
+        padding:5,
+        margin:5,
+        color:'#9C1C26',
+        borderLeftWidth:1,
+        borderColor:'#9C1C26',
+        borderTopWidth:0,
+        borderBottomWidth:0
+    },
+    topa:{
+        marginTop:15
+    },
+    flexd:{
+        justifyContent:'space-between'
+    },
+    topb:{
+        marginBottom:5 
+    },
+    texte:{
+        fontSize:18,
+        color:'#9C1C26',
+        fontWeight:'600'
+    },
+    textf:{
+        fontSize:18,
+        color:'rgba(0,0,0,0.3)',
+        fontWeight:'500'
+    },
+    textg:{
+        fontSize:18,
+        fontWeight:'600',
+        marginBottom:5
+    },
+    textInputa:{
+        height: 40, 
+        borderColor: 'rgba(0,0,0,.2)', 
+        borderWidth: 1,
+        paddingLeft:10,
+        borderRadius:5,
+        color:'rgb(0,0,0)'
     }
 })
 
 export const colors={
     b:"#ffffff",
     a:'#9C1C26',
+    aa:'rgba(156,28,38,1)',
     c:'#000000'
 }

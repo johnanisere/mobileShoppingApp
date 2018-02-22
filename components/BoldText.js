@@ -2,8 +2,8 @@ import React from 'react';
 import { Text } from 'react-native'
 import styles from '../styles/style'
 
-const BoldText=({text})=>(
-<Text style={styles.textWeight}>{text}</Text>
+const BoldText=({text,deco})=>(
+<Text style={[styles.textWeight,deco]}>{text}</Text>
 )
 
 export default BoldText
