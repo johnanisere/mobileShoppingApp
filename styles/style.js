@@ -60,6 +60,15 @@ export default StyleSheet.create({
         position:'relative',
         height:120 
     },
+    positiona:{
+        position:'relative'
+    },
+    positionb:{
+        position:'absolute'
+    },
+    radiusa:{
+        borderRadius:5
+    },
     containeri:{
         flex:1,
         position:'absolute',

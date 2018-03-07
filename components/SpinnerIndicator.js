@@ -22,14 +22,15 @@ class SpinnerIndicator extends React.Component {
   componentDidMount () {
     this.spin()
   }
+  
   render() {
     const spin = this.spinValue.interpolate({
       inputRange: [0, 1],
       outputRange: ['0deg', '360deg']
     })
     return (
-      <View style={[styles.container,{backgroundColor:"white"},this.props.customStyles]}>
-        <View style={[styles.anima]}>
+      <View style={[styles.container,{backgroundColor:"white"},...this.props.customStyles]}>
+        <View style={[styles.anima,...this.props.customStylesChild]}>
             <Animated.View
             style={{transform: [{rotate: spin}]}}
             >

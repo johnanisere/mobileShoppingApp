@@ -32,7 +32,7 @@ export default class MenuItem extends React.Component {
             (this.state.loading)?
             <SpinnerIndicator
                     customStyles={  
-                        styles.loading__a
+                        [styles.loading__a]
                     }   />:
             null
           }
