@@ -31,10 +31,10 @@ class Input extends Component{
     render () {
     return (
         (this.state.isPassword)?
-    <View style={[styles.all_width,styles.simple_Margin]}>
+    <View style={[styles.all_width,styles.simple_Margin,{paddingBottom:0}]}>
           {(this.state.displayInputLabel)?
             <Animatable.Text  style={[ styles.textColorb,
-                                       styles.heighta   ]}
+                                       styles.heighta  ]}
                               animation="fadeInUp" 
                               iterationCount={1}>
                 {this.props.text}
@@ -50,16 +50,16 @@ class Input extends Component{
                     styles.textColorb,
                     styles.widtha]}
             placeholderTextColor={colors.b}
-            onKeyPress={ this.triggerdisplayInputLabel }
+            onKeyPress={this.triggerdisplayInputLabel}
             secureTextEntry={ this.state.secured }
             onChangeText={ this.props.onChangeText }/>
             {(this.state.secured)?
             <Icon   name="ios-eye-off" 
-                    size={30} 
+                    size={24} 
                     color={colors.b} 
                     onPress={this.toggleSecure}/>:
             <Icon   name="ios-eye" 
-                    size={30} color={colors.b} 
+                    size={24} color={colors.b} 
                     onPress={this.toggleSecure}/>
             }
           </View>
@@ -75,8 +75,10 @@ class Input extends Component{
                 styles.heighta ]}></Text>
             }
             <TextInput
-                    placeholder={this.props.text}
-                    style={[styles.input,styles.textColorb,styles.input_holder]}
+                    placeholder={(this.props.disc)?
+                                    this.props.disc:
+                                    this.props.text}
+                    style={[styles.input,styles.textColorb,styles.input_holder,{paddingLeft:10,paddingRight:10,width:'100%'}]}
                     placeholderTextColor={colors.b}
                     onKeyPress={this.triggerdisplayInputLabel}
                     onChangeText={this.props.onChangeText }/>

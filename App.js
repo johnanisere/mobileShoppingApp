@@ -17,30 +17,49 @@ import Swipeable from 'react-native-swipeable'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import Button from './components/Button'
 import MoreItemInfo from './components/MoreItemInfo'
-
-
+import store from './data_Container/store'
+import lib from './lib/lib'
+import Root from './components/Navigation'
+import SignIn from './components/SignIn'
 
 export default class App extends React.Component {
   constructor(props){
     super(props)
     this.state={
-      quantity:1
+      displayInputLabel:false,
+      email:'',
+      password:'',
+      repeatPassword:'',
+      firstName:'',
+      lastName:'',
+      mobile:'',
+      page:false
     }
+    this.NavigatePage=this.NavigatePage.bind(this)
+    this.onSignUp=this.onSignUp.bind(this)
   }
+NavigatePage(){
+  this.setState((prevState)=>({page:!prevState.page}))
+}
+onSignUp(){
+  let signUpDetails={
+    email:this.state.email,
+    firstName:this.state.firstName,
+    lastName:this.state.lastName,
+    password:this.state.password,
+    mobile:this.state.mobile,
+    isCustomer:true,
+    isChef:false
+  }
+  console.log(signUpDetails)
+  lib.signup(signUpDetails)
+}
+
   
   render() {
     return (
-      <View style={[styles.container,{backgroundColor:colors.a}]}>
-          <View style={{flex:1,backgroundColor:'white'}}></View>
-          <View style={{flex:2,backgroundColor:'blue'}}>
-            <Img  
-                  source={{uri:this.props.imgsrc}} 
-                  style={[styles.all_width,styles.all_height]}
-                  onLoadStart={(e) => this.setState({loading: true})}
-                  onLoad={(e) => this.setState({loading: false})}/>
-          </View>
-          <View style={{flex:1,backgroundColor:'red'}}></View>
-      </View>
+      //<Root store={store}/>
+      <SignIn />
     );
   }
 }
