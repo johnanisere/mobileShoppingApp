@@ -3,6 +3,7 @@ import {StackNavigator} from 'react-navigation'
 import SignUp from './SignUp'
 import {connect} from 'react-redux'
 import {mapStateToProps} from '../lib/resources'
+import SignIn from './SignIn'
 
 const Navigation = StackNavigator({
     signup: { 
@@ -11,6 +12,12 @@ const Navigation = StackNavigator({
         header: false,
       }
      },
+    signin:{
+      screen: SignIn,
+      navigationOptions:{
+        header: false,
+      }
+    }
   })
 
   

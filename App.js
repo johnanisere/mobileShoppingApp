@@ -20,7 +20,7 @@ import MoreItemInfo from './components/MoreItemInfo'
 import store from './data_Container/store'
 import lib from './lib/lib'
 import Root from './components/Navigation'
-import SignIn from './components/SignIn'
+import New from './components/ShopContainer'
 
 export default class App extends React.Component {
   constructor(props){
@@ -59,7 +59,7 @@ onSignUp(){
   render() {
     return (
       //<Root store={store}/>
-      <SignIn />
+      <New store={store}/>
     );
   }
 }

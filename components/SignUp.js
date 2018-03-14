@@ -121,6 +121,7 @@ componentWillReceiveProps(nextProps){
             <Text style={{color:'rgba(255, 255, 255,.6)'}}>
               Already have an Account? 
               <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate('signin')}
                   style={{width:50,height:13}}>
                   <Text style={{paddingLeft:5,color:'rgba(255, 255, 255,1)'}}>
                     Sign In

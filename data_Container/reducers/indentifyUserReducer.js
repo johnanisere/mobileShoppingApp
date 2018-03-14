@@ -25,7 +25,15 @@ const initialstate={
 	},
 	time_to_reauthenticate:{
 		is_time_to_reauthenticate:false,
-		reauthentication_url:""
+		response:'',
+		reference:'',
+		error:'',
+		fetching:false
+	},
+	reauthentication:{
+		response:'',
+		error:'',
+		fetching:false
 	},
 	transactionError:{
 		isError:false,
@@ -53,6 +61,53 @@ const identifyUser=(state=initialstate,action)=>{
 					error: action.payload.error,
 					updating_user_info:false,
 					updated_user_info:false
+				}
+			}
+		}
+		case 'CLEAR_CARD_ERROR':{
+			return{
+				...state,
+				reauthentication:{
+					response:'',
+					error:'',
+					fetching:false
+				},
+				time_to_reauthenticate:{
+					is_time_to_reauthenticate:false,
+					response:'',
+					reference:'',
+					error:'',
+					fetching:false
+				}
+			}
+		}
+		case 'REAUTHENTICATE_CARD_PENDING':{
+			return{
+				...state,
+				reauthentication:{
+					response:'',
+					error:'',
+					fetching:true
+				}
+			}
+		}
+		case 'REAUTHENTICATE_CARD_FULFILLED':{
+			return{
+				...state,
+				reauthentication:{
+					response:action.payload.body,
+					error:'',
+					fetching:false
+				}
+			}
+		}
+		case 'REAUTHENTICATE_CARD_REJECTED':{
+			return{
+				...state,
+				reauthentication:{
+					response:'',
+					error:action.payload.response.body,
+					fetching:false
 				}
 			}
 		}
@@ -103,12 +158,39 @@ const identifyUser=(state=initialstate,action)=>{
 				}
 			}
 		}
-		case 'TIME_TO_REAUTHENTICATE':{
+		case 'TIME_TO_REAUTHENTICATE_PENDING':{
 			return{
 				...state,
 				time_to_reauthenticate:{
-					is_time_to_reauthenticate:!action.payload.is_time_to_reauthenticate,
-					reauthentication_url:action.payload.url
+					is_time_to_reauthenticate:false,
+					response:'',
+					reference:'',
+					error:'',
+					fetching:true
+				}
+			}
+		}
+		case 'TIME_TO_REAUTHENTICATE_FULFILLED':{
+			return{
+				...state,
+				time_to_reauthenticate:{
+					is_time_to_reauthenticate:action.payload.body.status,
+					response:action.payload.body.data.display_text||action.payload.body.data.status,
+					reference:action.payload.body.data.reference,
+					error:'',
+					fetching:false
+				}
+			}
+		}
+		case 'TIME_TO_REAUTHENTICATE_REJECTED':{
+			return{
+				...state,
+				time_to_reauthenticate:{
+					is_time_to_reauthenticate:false,
+					response:'',
+					reference:'',
+					error:action.payload.response,
+					fetching:false
 				}
 			}
 		}
