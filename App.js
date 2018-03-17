@@ -21,6 +21,7 @@ import store from './data_Container/store'
 import lib from './lib/lib'
 import Root from './components/Navigation'
 import New from './components/ShopContainer'
+//import New from './components/ChefAndMenu'
 
 export default class App extends React.Component {
   constructor(props){

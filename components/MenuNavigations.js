@@ -6,27 +6,51 @@ import BoldText from './BoldText'
 import rsc from '../lib/resources'
 import Img from './Images'
 import KitchenDetails from './KitchenDetails'
+import propTypes from 'prop-types'
 
-const MenuNavigation=()=>(
-    <View style={styles.containera}>
+const MenuNavigation=(props)=>(
+    <View style={[styles.containera,...props.style]}>
          <View style={styles.containerb}>
-          <MenuIconButton 
-            text="Dish"
-            style={styles.flexa}
-            dimension={styles.dimensiona}
-            source={rsc.potUri}/>
+            <MenuIconButton 
+              text="Cuisine"
+              style={styles.flexa}
+              dimension={styles.dimensiona}
+              source={rsc.potUri}
+              onPress={props.cuisinePress}
+              deco={{marginTop:5}}
+              />
           <MenuIconButton 
             text="Menu"
             style={styles.flexa}
             dimension={styles.dimensiona}
-            source={rsc.potUri}/>
+            source={rsc.potUri}
+            onPress={props.menuPress}
+            underlayColor={'#F69322'} 
+            deco={{marginTop:5}}           
+            />
           <MenuIconButton 
-            text="Pay"
+            text="Checkout"
             style={styles.flexa}
             dimension={styles.dimensiona}
-            source={rsc.potUri}/>
+            source={rsc.potUri}
+            onPress={props.checkoutPress}
+            underlayColor={'#5CBC5C'}
+            deco={{marginTop:5}}
+            />
          </View>
-         <KitchenDetails source={rsc.potUri}/>
+         {
+            (props.KitchenDetails)?
+            <KitchenDetails source={rsc.potUri}/>:
+            null
+         }
        </View>
 )
 export default MenuNavigation
+
+MenuNavigation.propTypes={
+  style:propTypes.array.isRequired,
+  KitchenDetails:propTypes.bool.isRequired,
+  cuisinePress:propTypes.func.isRequired,
+  checkoutPress:propTypes.func.isRequired,
+  menuPress:propTypes.func.isRequired
+}

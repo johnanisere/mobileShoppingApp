@@ -8,7 +8,7 @@ export default StyleSheet.create({
     },
     containera:{
         backgroundColor:'white',
-        borderRadius:5,
+        borderRadius:10,
         padding:10,
         paddingBottom:0
     },
@@ -22,7 +22,7 @@ export default StyleSheet.create({
         justifyContent:'space-between',
         borderTopWidth:1,
         borderTopColor:'rgba(0,0,0,0.2)',
-        padding:10,
+        padding:8,
         paddingLeft:20,
         paddingRight:20
     },
@@ -115,7 +115,7 @@ export default StyleSheet.create({
         backgroundColor:'white',
     },
     toucha:{
-        padding:20,
+        padding:12,
         backgroundColor:'rgba(0,0,0,0.05)',
         borderRadius:50
     },
@@ -206,7 +206,7 @@ export default StyleSheet.create({
         alignItems:"center"
     },
     texta:{
-        fontSize:20,
+        fontSize:18,
         color:'#9C1C26'
     },
     textb:{

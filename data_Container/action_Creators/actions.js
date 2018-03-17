@@ -62,12 +62,32 @@ export const time_to_reauthenticate=(_)=>({
 	type:'TIME_TO_REAUTHENTICATE',
 	payload:_
 })
-
+//reauthentication confirmation
 export const reauthenticate=(_)=>({
 	type:'REAUTHENTICATE_CARD',
 	payload:_
 })
-
+//card transction error
 export const clear_card_error=()=>({
 	type:'CLEAR_CARD_ERROR'
 })
+//user location
+export const fetch_address=(add,latLng)=>({
+	type:'FETCH_ADDRESS',
+	payload:{address:add,lng:latLng.lng,lat:latLng.lat}
+})
+//fetch list of chefs
+export const fetch_chef=(_)=>({
+	type:'GET_CHEFS',
+	payload:axios.get(ajx.chefendpoint+_)
+})
+//organise chefs into cuisine
+export const chef_Cuisine=(_)=>({
+	type:'GET_CHEF_AND_CUISINE',
+	payload:_
+})
+//get chef update
+export const get_chef=(chef)=>({
+	type:'GET_CHEFS_UPDATE',
+	payload:chef
+});

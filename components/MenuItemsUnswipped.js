@@ -5,6 +5,7 @@ import rsc from '../lib/resources'
 import styles from '../styles/style'
 import SpinnerIndicator from './SpinnerIndicator'
 import propTypes from 'prop-types'
+import Dimensions from 'Dimensions'
 
 export default class MenuItem extends React.Component {
   constructor(props){
@@ -15,26 +16,35 @@ export default class MenuItem extends React.Component {
   }
   render() {
     return (
-        <View style={[styles.containerg,{height:120}]}>
+        <View style={[
+          styles.containerg,
+          {
+            height:Dimensions.get('window').height* 5/8*1/4-10,
+            position:'relative'
+            }]}>
           <View style={styles.flexb}>
-            <Text style={styles.texta}>{this.props.foodName}</Text>
-            <Text style={styles.textb}>
+            <Text style={[styles.texta,{fontSize:18}]}>{this.props.foodName}</Text>
+            <Text style={[styles.textb,{fontSize:14}]}>
               {'\u2022'}
-              <Text>{this.props.cuisine}</Text>
+              <Text style={[{fontSize:14}]} >{this.props.cuisine}</Text>
             </Text>
-            <Text style={styles.textc}>₦{this.props.foodPrice}</Text>
+            <Text style={[styles.textc,{fontSize:18}]}>₦{this.props.foodPrice}</Text>
           </View>
           <Img source={{uri:this.props.foodImg}}
-              style={styles.imagea}
+              style={[styles.imagea,{width:70,height:70,borderRadius:35}]}
               onLoadStart={(e) => this.setState({loading: true})}
               onLoad={(e) => this.setState({loading: false})}/>
           {
             (this.state.loading)?
+            <View style={[styles.imagea,{width:70,height:70,borderRadius:35,position:'absolute',right:0,justifyContent:'center',alignItems:'center'}]}>
             <SpinnerIndicator
                     customStyles={  
-                        [styles.loading__a]
-                    }   />:
+                        [styles.loading__a,{width:70,height:70,borderRadius:35}]
+                    }
+                    customStylesChild={[{width:70,height:70,borderRadius:35}]}   />
+                    </View>:
             null
+            
           }
         </View>
     );

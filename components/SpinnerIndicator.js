@@ -32,8 +32,7 @@ class SpinnerIndicator extends React.Component {
       <View style={[styles.container,{backgroundColor:"white"},...this.props.customStyles]}>
         <View style={[styles.anima,...this.props.customStylesChild]}>
             <Animated.View
-            style={{transform: [{rotate: spin}]}}
-            >
+                style={{transform: [{rotate: spin}]}}>
             <Icon name="spinner-3" size={30} color={colors.aa} />
             </Animated.View>
         </View>

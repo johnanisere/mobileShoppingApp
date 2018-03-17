@@ -10,7 +10,12 @@ import Swipeable from 'react-native-swipeable'
 
 
 const MenuItem=(props)=> (
-      <View style={[styles.container,{backgroundColor:'white'}]}>
+      <View style={[
+        styles.container,
+        {
+          margin:0,
+          backgroundColor:'white'
+          }]}>
         <Swipeable rightContent={
                       <MenuItemsSwipped 
                           foodName = {props.foodName}

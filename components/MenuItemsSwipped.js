@@ -7,6 +7,7 @@ import rsc from '../lib/resources'
 import Img from './Images'
 import SpinnerIndicator from './SpinnerIndicator'
 import propTypes from 'prop-types'
+import Dimensions from 'Dimensions'
 
 export default class MenuItemsSwipped extends React.Component {
   constructor(props){
@@ -17,24 +18,12 @@ export default class MenuItemsSwipped extends React.Component {
   }
   render() {
     return (
-      <View style={[styles.container,{backgroundColor:'white'}]}>
-        <View style={styles.containerh}>
-          <Img source={{uri:this.props.foodImg}}
-              style={[styles.imagea,{margin:20}]}
-              onLoadStart={(e) => this.setState({loading: true})}
-              onLoad={(e) => this.setState({loading: false})}
-              />
-          {
-            (this.state.loading)?
-            <View style={styles.containeri}>
-              <SpinnerIndicator />
-            </View>:
-            null
-          }
-          <View style={styles.containerj}>
-            <Text style={[{color:'white',fontSize:22}]} >{this.props.foodName}</Text>
-            <Text style={[{color:'white',fontSize:18}]} >₦{this.props.foodPrice}</Text>
-            <Text style={[{color:'white',fontSize:22}]} >1 item added to cart</Text>
+      <View style={[styles.container,{backgroundColor:'white',height:Dimensions.get('window').height* 5/8*1/4-10}]}>
+        <View style={[styles.containerh,{flex:1}]}>
+          <View style={[styles.containerj,{flex:1}]}>
+            <Text style={[{color:'white',fontSize:16,fontWeight:'600'}]} >{this.props.foodName}</Text>
+            <Text style={[{color:'white',fontSize:14}]} >₦{this.props.foodPrice}</Text>
+            <Text style={[{color:'white',fontSize:16,fontWeight:'600'}]} >1 item added to cart</Text>
           </View>
         </View>
       </View>
