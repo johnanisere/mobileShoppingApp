@@ -61,8 +61,19 @@ const getChefs=(state=initialstatechefs,action)=>{
 			return{
 				...state,
 				fetching:false,
-				fetched:true,
+				fetched: true,
 				yourChef:action.payload.yourChef,
+				menuCategoriesKeys:action.payload.categ,
+				menuCategories:action.payload.menu,
+				currentCuisine:action.payload.cuisine,
+				error:null
+			}
+		}
+		case 'SELECT_CUISINE':{
+			return{
+				...state,
+				fetching:true,
+				fetched: false,
 				menuCategoriesKeys:action.payload.categ,
 				menuCategories:action.payload.menu,
 				currentCuisine:action.payload.cuisine,

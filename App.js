@@ -19,9 +19,13 @@ import Button from './components/Button'
 import MoreItemInfo from './components/MoreItemInfo'
 import store from './data_Container/store'
 import lib from './lib/lib'
-import Root from './components/Navigation'
-import New from './components/ShopContainer'
+import Root from './components/navigator/Navigation'
+//import New from './components/ShopContainer'
+//import New from './components/pay'
 //import New from './components/ChefAndMenu'
+//import New from './components/MoreItemInfo'
+//import New from './components/ProceedToCheckOut'
+//import New from './components/Chef'
 
 export default class App extends React.Component {
   constructor(props){
@@ -59,8 +63,8 @@ onSignUp(){
   
   render() {
     return (
-      //<Root store={store}/>
-      <New store={store}/>
+      <Root store={store}/>
+      //<New store={store} />
     );
   }
 }

@@ -18,7 +18,8 @@ export default class MenuItemsSwipped extends React.Component {
   }
   render() {
     return (
-      <View style={[styles.container,{backgroundColor:'white',height:Dimensions.get('window').height* 5/8*1/4-10}]}>
+      <TouchableOpacity style={[styles.container,{backgroundColor:'white',height:Dimensions.get('window').height* 5/8*1/4-10}]}
+                        onPress={this.props.onUserPress}>
         <View style={[styles.containerh,{flex:1}]}>
           <View style={[styles.containerj,{flex:1}]}>
             <Text style={[{color:'white',fontSize:16,fontWeight:'600'}]} >{this.props.foodName}</Text>
@@ -26,7 +27,7 @@ export default class MenuItemsSwipped extends React.Component {
             <Text style={[{color:'white',fontSize:16,fontWeight:'600'}]} >1 item added to cart</Text>
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   }
 }
@@ -34,5 +35,6 @@ export default class MenuItemsSwipped extends React.Component {
 MenuItemsSwipped.propTypes={
   foodName:propTypes.string.isRequired,
   foodPrice:propTypes.number.isRequired,
-  foodImg:propTypes.string.isRequired
+  foodImg:propTypes.string.isRequired,
+  onUserPress:propTypes.func.isRequired
 }

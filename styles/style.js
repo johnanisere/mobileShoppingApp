@@ -283,7 +283,7 @@ export default StyleSheet.create({
         marginBottom:5
     },
     textInputa:{
-        height: 40, 
+        height: 35, 
         borderColor: 'rgba(0,0,0,.2)', 
         borderWidth: 1,
         paddingLeft:10,

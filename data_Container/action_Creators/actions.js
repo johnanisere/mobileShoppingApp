@@ -90,4 +90,43 @@ export const chef_Cuisine=(_)=>({
 export const get_chef=(chef)=>({
 	type:'GET_CHEFS_UPDATE',
 	payload:chef
-});
+})
+//select cuisine
+export const select_cuisine=(chef)=>({ 
+	type:'SELECT_CUISINE',
+	payload:chef
+})
+
+//delete cart
+export const delete_cart=()=>({
+	type:'DELETE_CART'
+})
+
+//update_cart
+export const update_cart=(response)=>({
+	type:'UPDATE_CART',
+	payload:response
+})
+
+//add new transaction
+export const transaction=(_)=>({
+	type:'ADD_NEW_TRANSACTION',
+	payload:_
+})
+
+export const delivery_info=(_)=>({
+	type:'DELIVERY_NOTE',
+	payload:_
+})
+
+//place order
+export const order=(_)=>({
+	type:'ORDER_STATUS',
+	payload:Promise.all(_)
+})
+
+//clear transaction object
+export const cleartransaction=()=>({
+	type:'CLEAR_TRANSACTION',
+	payload:[]
+})

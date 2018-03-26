@@ -14,8 +14,6 @@ import Card from './Card'
 import CheckBox from 'react-native-check-box'
 import * as Animatable from 'react-native-animatable'
 import CardInputCollection from './CardInputCollection'
-import {mapStateToProps} from '../lib/resources'
-import {connect} from 'react-redux'
 import Otp from './Otp'
 
 class CardDetails extends Component {
@@ -68,8 +66,9 @@ class CardDetails extends Component {
     }
 
     render(){
+        const { time_to_reauthenticate,reauthentication,fetching_addcard}=this.props.screenProps.user
         return(
-            <View style={{alignSelf:'stretch',flex:1,padding:20}}>
+            <View style={{alignSelf:'stretch',flex:1,padding:20,paddingTop:0,paddingBottom:0}}>
                 <Animatable.View    animation="fadeInDownBig"
                                     style={{flex:1,display:'flex',marginBottom:30}}>
                     <Card 
@@ -80,21 +79,21 @@ class CardDetails extends Component {
                         />
                 </Animatable.View>
                 {
-                        (this.props.user.time_to_reauthenticate.is_time_to_reauthenticate)?
+                        (time_to_reauthenticate.is_time_to_reauthenticate)?
                             <Animatable.View  animation="fadeInRightBig"
                                             style={{flex:1}}>
                                 <Otp
-                                    text = {this.props.user.time_to_reauthenticate.response}
+                                    text = {time_to_reauthenticate.response}
                                     textValue = {this.state.otp}
                                     textEvent = {(otp)=>this.setState({otp})}
                                     buttonEvent = {()=>lib.sendOtp(this.state.otp)}
-                                    activity={{send:this.props.user.reauthentication.fetching}}
-                                    response={this.props.user.reauthentication} />
+                                    activity={{send:reauthentication.fetching}}
+                                    response={reauthentication} />
                             </Animatable.View>:
                             <Animatable.View  animation="fadeInUpBig"
                                                     style={{flex:1}}>
                                 <CardInputCollection 
-                                                activity={{saving:this.props.user.fetching_addcard,authenticating:this.props.user.time_to_reauthenticate.fetching}}
+                                                activity={{saving:fetching_addcard,authenticating:time_to_reauthenticate.fetching}}
                                                 cardValue = {this.state.cardNumber}
                                                 cardEvent = {(cardNumber)=>this.setState({cardNumber})}
                                                 expiresValue = {this.state.expires}
@@ -112,4 +111,4 @@ class CardDetails extends Component {
     }
 }
 
-export default connect(mapStateToProps)(CardDetails)
+export default CardDetails

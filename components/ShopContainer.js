@@ -22,12 +22,21 @@ import {mapStateToProps} from '../lib/resources'
 import SpinnerIndicator from './SpinnerIndicator'
 import * as Animatable from 'react-native-animatable'
 import  CuisineItems from './CuisineItems'
-import ChefAndMenu from './ChefAndMenu'
+import ChefAndMenu from './navigator/ChefAndMenu'
+import ProceedToCheckOut from './ProceedToCheckOut'
+import Header from './Header'
+import Chef from './Chef'
+import Chefo from './navigator/MenuList'
+import CheckOut from './navigator/Checkout'
 
 class ShopContainer extends Component {
     constructor(props){
         super(props)
-        console.log(props)
+        //console.log(props)
+        this.state = {
+            cartActivity:false,
+            menuActivity:false
+        }
     }
     
     
@@ -39,7 +48,9 @@ render(){
                 position:'relative',
                 padding:20,
                 paddingTop:20,
-                paddingBottom:5
+                paddingBottom:5,
+                paddingLeft:10,
+                paddingRight:10
                 }}>
             <View   style={{
                     position:'absolute',
@@ -50,73 +61,49 @@ render(){
                     }}>
                 <Map/>
             </View>
-            < View  style={{
-                    flex:1,
+            < Animatable.View  style={{
+                    flex:.8,
                     justifyContent:'space-between'
-                    }}>
-                <View   style={{
-                        flexDirection:'row',
-                        justifyContent:'space-between'
-                        }}>
-                    <Icon   name="menu" 
-                            size={30} 
-                            color={colors.c} 
-                            onPress={()=>console.log('Great!!')}/>
-                    <Icon   name="menu" 
-                            size={24} 
-                            color={'transparent'}/>
-
-                </View>
-                <View   style={{
-                        backgroundColor:'white',
-                        marginLeft:20,
-                        marginRight:20,
-                        flexDirection:'row',
-                        justifyContent:'space-between',
-                        alignItems:'center',
-                        height:45,
-                        paddingRight:10,
-                        borderRadius:5,
-                        borderWidth:1,
-                        borderColor:'rgba(0,0,0,.2)'
-                        }}>
-                    <View   style={{
-                            flex:1,
-                            justifyContent:'center',
-                            alignItems:'center'
-                            }}>
-                        <Icon   name="location-on" 
-                                size={26} 
-                                color={colors.a} 
-                                onPress={()=>console.log('Great!!')}/>
-                    </View>
-                    <Text   style={{
-                            flex:6,
-                            fontSize:18,
-                            color:colors.a,
-                            //whiteSpace:'nowrap',
-                           // overflow:'hidden',
-                            //textOverflow:'ellipsis'
-                            }}
-                            numberOfLines={1}>
-                        {
-                           (this.props.address.Located)? this.props.address.Location : '...Locating you'
-                        }
-
-                    </Text>
-                </View>
-            </View>
+                    }}
+                    animation='fadeInDown'>
+                <Header address = {this.props.screenProps.address}
+                        cartActivityEvnt = {()=>this.setState({cartActivity:!this.state.cartActivity})}
+                        menuActivityEvnt = {()=>this.setState({menuActivity:!this.state.menuActivity})} />
+                
+            </Animatable.View>
             <View   style={{
-                    flex:5 ,
-                    paddingTop:10,
-                    paddingBottom:10
-                    }}>
-                    {   (this.props.chef.fetched)?
-                        <ChefAndMenu/>:
-                       (this.props.chef.fetched_chefsInYourArea)? 
+                    flex:7,
+                    paddingBottom:10,
+                    backgroundColor:'transparent',
+                    shadowColor:'#000000',
+                    shadowOpacity: .5,
+                    shadowOffset: {
+                            width: 0,
+                            height: 1
+                        }}}>
+                    {   /*(this.props.screenProps.chef.fetched)?
+                        <Animatable.View animation="fadeInRightBig" style={{flex:1}}> 
+                            <MenuList chef={this.props.screenProps.chef}/>
+                        </Animatable.View>:
+                        (this.props.screenProps.chef.currentCuisine)?
+                        <Animatable.View animation="fadeInRightBig" style={{flex:1}}> 
+                            <Chef   chef={this.props.screenProps.chef.chefAndCuisine}
+                                    currentCuisine={this.props.screenProps.chef.currentCuisine}/>
+                        </Animatable.View>:*/
+                        (this.state.cartActivity)?
+                        <CheckOut   store={this.props.screenProps}/>:
+                        (this.props.screenProps.chef.currentCuisine)?
+                        //<ProceedToCheckOut/>:
+                        //<Pay/>:
+                        <Animatable.View animation="fadeInRightBig" style={{flex:1}}> 
+                            <ChefAndMenu    chef={this.props.screenProps.chef}
+                                            currentCuisine={this.props.screenProps.chef.currentCuisine}
+                                            store={this.props.screenProps}/>
+                        </Animatable.View>:
+                       (this.props.screenProps.chef.fetched_chefsInYourArea)? 
                        <Animatable.View animation="fadeInRightBig" >       
                             <CuisineItems
-                                chefAndCuisine={this.props.chef.chefAndCuisine}/>
+                                chefAndCuisine={this.props.screenProps.chef.chefAndCuisine}/>
                         </Animatable.View>:
 
                         <Animatable.View animation="zoomIn" style={{flex:1,justifyContent:'center',alignItems:'center', backgroundColor:'rgba(255,255,255,0)'}} >
@@ -143,21 +130,30 @@ render(){
                        </Animatable.View >
                     }
             </View>
-            <View style={{flex:2,justifyContent:'flex-start'}}>
+            <Animatable.View style={{
+                flex:2.8,
+                justifyContent:'flex-start',
+                backgroundColor:'transparent',
+                shadowColor:'#000000',
+                shadowOpacity: .5,
+                shadowOffset: {
+                        width: 0,
+                        height: 1
+                    }}} animation='fadeInUpBig'>
                 <MenuNavigation
                     style={[{width:'100%'}]}
-                    KitchenDetails={true}
+                    KitchenDetails={false}
                     cuisinePress={()=>console.log('you pressed cuisine')}
                     checkoutPress={()=>console.log('you pressed checkout')}
                     menuPress={()=>console.log('you pressed menu')}
                     />
                     
-            </View>
+            </Animatable.View>
         </View>
     )
 }
     
 }
 
-export default connect(mapStateToProps)(ShopContainer)
-//export default ShopContainer
+//export default connect(mapStateToProps)(ShopContainer)
+export default ShopContainer

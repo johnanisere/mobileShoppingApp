@@ -97,6 +97,15 @@ export default class SignIn extends Component{
                                 width: 0,
                                 height: 1
                             }},styles.button__Widec,styles.button__Long]}/>:
+                    (this.props.screenProps.user.fetching && !this.props.screenProps.user.isAuthenticated)?
+                    <Button text="Please wait.."
+                            textColor={[{color:colors.a}]}
+                            event={()=>console.log('signing in')}
+                            button={[{backgroundColor:'#fff',borderRadius:5, display:'flex',justifyContent:'center',alignItems:'center',padding:0,margin:0,shadowColor:'#000000',shadowRadius: 5,
+                            shadowOpacity: .5,shadowOffset: {
+                                width: 0,
+                                height: 1
+                            }},styles.button__Widec,styles.button__Long]}/>:
                     <Button text="Sign In"
                             textColor={[{color:colors.a}]}
                             event={this.onLogin}
@@ -121,6 +130,9 @@ export default class SignIn extends Component{
                     </Text>
                 </View>
             </View>
+            {
+                //(!this.props.screenProps.user.error)? alert(this.props.screenProps.user.error):null
+            }
         </View>
         )
     }

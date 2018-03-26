@@ -19,6 +19,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "africaistalking": "^1.0.7",
     "axios": "^0.18.0",
     "expo": "25.0.0",
     "lodash": "^4.17.5",

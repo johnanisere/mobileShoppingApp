@@ -25,8 +25,11 @@ import * as Animatable from 'react-native-animatable'
 export default class CuisineItems extends Component {
     constructor(props){
         super(props)
-
+        this.state={
+            chefs:null
+        }
     }
+
     render(){
         return(
             <ScrollView style={{
@@ -45,10 +48,10 @@ export default class CuisineItems extends Component {
                     {
                         Object.keys(this.props.chefAndCuisine).map((val,i)=>
                             <View style={{
-                                width:'50%',
-                                justifyContent:'center',
-                                alignItems:'center'}}
-                                key={i}>
+                                    width:'50%',
+                                    justifyContent:'center',
+                                    alignItems:'center'}}
+                                  key={i}>
                                 <MenuIconButton 
                                         text={val}
                                         style={styles.flexa}
@@ -56,7 +59,7 @@ export default class CuisineItems extends Component {
                                         radius={{padding:35,borderRadius:175}}
                                         source={rsc.potUri}
                                         deco={{fontSize:16,marginTop:10}}
-                                        onPress={()=>lib.updatechefbycuisine(val)}
+                                        onPress={()=>lib.cuisinechoice(val)}
                                         />
                             </View>
                         )

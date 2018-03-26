@@ -24,7 +24,7 @@ export default class CardComponent extends Component {
 
     render (){
         return(
-            <View style={{
+            <View style={[{
                 padding:20,
                 backgroundColor:'#465361',
                 margin:17,
@@ -35,7 +35,7 @@ export default class CardComponent extends Component {
                 shadowOffset: {
                         width: 0,
                         height: 15
-                    }}}>
+                    }},{...this.props.style}]}>
                 <View style={{height:40,flexDirection:'row',justifyContent:'space-between',alignItems:'center',marginBottom:10}}>
                 </View>
                 <View style={{height:50,flexDirection:'row',justifyContent:'space-between',alignItems:'center',marginBottom:10}}>
@@ -93,5 +93,6 @@ CardComponent.propTypes={
     cardNumber:propTypes.string,
     cardHolder:propTypes.string,
     expires:propTypes.string,
-    CVC:propTypes.string
+    CVC:propTypes.string,
+    style:propTypes.object
 }
